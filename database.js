@@ -7,10 +7,6 @@ var connection = mysql.createConnection({
     database : "short-url"
 });
 
-function connect(){
-    connection.connect();
-}
-
 function queryDatabase(shortUrl,f){
     var sql = "SELECT * from url where shortUrl='"+ shortUrl +"'";
     connection.query(sql,(error, results, feilds)=>{
@@ -27,12 +23,5 @@ function incrementUrlNoOfClicks(shortUrl, f){
     });
 }
 
-function close()
-{
-    connection.end();
-}
-
 module.exports.queryDatabase = queryDatabase;
-module.exports.connect = connect;
-module.exports.close = close;
 module.exports.incrementUrlNoOfClicks = incrementUrlNoOfClicks;

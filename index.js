@@ -32,9 +32,12 @@ const server = http.createServer((req, res)=>{
                 res.end();
             }
         });
-        database.incrementUrlNoOfClicks(req.url, (results, feilds)=>{
-            console.log(results);
-        });
+        if(flag)
+        {
+            database.incrementUrlNoOfClicks(req.url, (results, feilds)=>{
+                console.log(results);
+            });
+        }
     }
     else
     {
@@ -43,6 +46,8 @@ const server = http.createServer((req, res)=>{
     }
 });
 
-server.listen(300,()=>{
-    console.log(`Listening on PORT 300`);
+const PORT = 300;
+
+server.listen(PORT,()=>{
+    console.log(`Listening on PORT ${PORT}`);
 });
