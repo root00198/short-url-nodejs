@@ -19,7 +19,6 @@ function incrementUrlNoOfClicks(shortUrl, f){
     var sql = `UPDATE url set noc=noc+1 where shortUrl='${shortUrl}'`;
     connection.query(sql,(error, results, feilds)=>{
         if(error) throw error;
-        f(results, feilds);
     });
 }
 

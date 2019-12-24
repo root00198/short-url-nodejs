@@ -1,43 +1,34 @@
-const http = require('http');
+const path = require('path');
+const express = require('express');
 
-const server = http.createServer((req, res)=>{
-    req.url = req.url.substr(1);
-    if(/^$/.test(req.url))
-    {
-        // res.writeHead(302,{"Location" : 'https://whataftercolllege.com/' }); 
-        res.write("https://whataftercollege.com/");  
-        res.end();
-    }
-    else if(/^backend\/(.*)$/.test(req.url))
-    {
-        res.write("Take Me to backend protal");  
-        res.end();
-    }
-    else if(/^([a-zA-Z0-9\-\(\)]+)$/.test(req.url))
+const app = express();
+
+app.use(express.static(path.join(__dirname,'public')));
+
+app.get("/", (req,res)=>{
+    // res.writeHead(302,{"Location" : 'https://whataftercolllege.com/' }); 
+    res.write("https://whataftercollege.com/");  
+    res.end();
+});
+
+app.get("/:id", (req, res)=>{
+    if(/^([a-zA-Z0-9\-\(\)]+)$/.test(req.params.id))
     {
         const database = require('./database.js');
-        var flag = true;
-        database.queryDatabase(req.url,(results, feilds)=>{
-            console.log(results);
+        database.queryDatabase(req.params.id,(results, feilds)=>{
             if(results[0])
             {
                 // res.writeHead(302,{"Location" : results[0]['longUrl'] }); 
                 res.write(results[0]['longUrl']);  
                 res.end();
+                database.incrementUrlNoOfClicks(req.params.id);
             }
             else
             {
-                flag = false;
                 res.writeHead(404);
                 res.end();
             }
         });
-        if(flag)
-        {
-            database.incrementUrlNoOfClicks(req.url, (results, feilds)=>{
-                console.log(results);
-            });
-        }
     }
     else
     {
@@ -46,8 +37,10 @@ const server = http.createServer((req, res)=>{
     }
 });
 
+
+
 const PORT = 300;
 
-server.listen(PORT,()=>{
+app.listen(PORT, ()=>{
     console.log(`Listening on PORT ${PORT}`);
 });
