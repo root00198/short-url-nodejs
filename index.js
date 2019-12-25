@@ -1,13 +1,16 @@
 const path = require('path');
 const express = require('express');
+const exphbs = require('express-handlebars');
 
 const app = express();
 
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
 app.use(express.static(path.join(__dirname,'public')));
 
-app.get("/", (req,res)=>{
-    // res.writeHead(302,{"Location" : 'https://whataftercolllege.com/' }); 
-    res.write("https://whataftercollege.com/");  
+app.get("/", (req,res)=>{ 
+    res.write("REDIRECT(302) : https://whataftercollege.com/");  
     res.end();
 });
 
@@ -18,16 +21,12 @@ app.get("/:id", (req, res)=>{
         database.queryDatabase(req.params.id,(results, feilds)=>{
             if(results[0])
             {
-                // res.writeHead(302,{"Location" : results[0]['longUrl'] }); 
-                res.write(results[0]['longUrl']);  
-                res.end();
+                res.write("REDIRECT(302) : " + results[0]['longUrl']);
                 database.incrementUrlNoOfClicks(req.params.id);
             }
             else
-            {
                 res.writeHead(404);
-                res.end();
-            }
+            res.end();
         });
     }
     else
@@ -37,7 +36,7 @@ app.get("/:id", (req, res)=>{
     }
 });
 
-
+app.use('^/backend/', require("./backend.js"));
 
 const PORT = 300;
 
