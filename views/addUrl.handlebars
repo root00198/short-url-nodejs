@@ -1,0 +1,76 @@
+<div class="col-12">
+  <div class="card card-hover card-analytics-one">
+    <div class="card-body">
+      <form>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="longUrl">Long URL</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" required id="longUrl" name="longUrl" placeholder="https://example.com/abc">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="shortUrl">Short URL</label>
+             <div class="input-group mg-b-10 col-sm-10">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">https://wac.co.in/</span>
+              </div>
+              <input type="text" class="form-control" required id="shortUrl" name="shortUrl" placeholder="Shortened-Url" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-6 col-form-label" for="active">Enable/Disable</label>
+          <div class="custom-control custom-switch col-sm-9 col-6 mg-t-8 mg-l-15">
+            <input type="checkbox" checked value="1"  class="custom-control-input" id="active" name="active">
+            <label class="custom-control-label" for="active">Active</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <button type="submit" onclick="return validateData()&&false" class="btn btn-primary mg-l-15">Submit</button>
+          <button type="reset" class="btn btn-secondary mg-l-15">Cancel</button>
+        </div>
+      </form>
+      <hr>
+       <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Server Message</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" readonly id="message" value="Server Returned Message">
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+  function validateData()
+  {
+    var longUrl = document.getElementById("longUrl").value;
+    var shortUrl = document.getElementById("shortUrl").value;
+    var active = document.getElementById("active").checked;
+    if(!/^http:\/\/(.*)\.(.*)$/.test(longUrl) && !/^https:\/\/(.*)\.(.*)$/.test(longUrl))
+    {
+      alert("invalid long url");
+      return false;
+    }
+    if(!/^[^/]*$/.test(shortUrl))
+    {
+      alert("invalid short url");
+      return false;
+    }
+    
+    $.ajax({
+      type: "POST",
+      url: "addurl",
+      data: {
+        longUrl: longUrl,
+        shortUrl: shortUrl,
+        active: active,
+        counselor: 'naman',
+      },
+      success: function (msg) {
+          document.getElementById("message").value=msg["msg"];
+      }
+    });
+    return false;
+  }
+</script>

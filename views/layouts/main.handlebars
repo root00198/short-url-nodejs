@@ -3,28 +3,37 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
     <title>Backend</title>
-    <link rel="stylesheet" href="assets/css/cassie.css">
-    <script src="lib/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/cassie.css">
+    <script src="/lib/jquery/jquery.min.js"></script>
   </head>
 
   <body>
     <div class="sidebar">
       <div class="sidebar-header">
         <div>
-          <a href="#" class="sidebar-logo"><span>Workshop</span></a>
+          <a href="#" class="sidebar-logo"><span>Short Url</span></a>
           <small class="sidebar-logo-headline">BACKEND</small>
         </div>
       </div>
       <div id="dpSidebarBody" class="sidebar-body">
         <ul class="nav nav-sidebar">
-          <li class="nav-label"><label class="content-label">Workshop Navigation</label></li>
+          <li class="nav-label"><label class="content-label">Navigation</label></li>
           <li class="nav-item">
-            <a href="dashboard" class="nav-link active"><i data-feather="box"></i> Dashboard</a>
+            <a href="/backend/dashboard" class="nav-link{{#if dashboard}} active {{/if}}"><i data-feather="box"></i> Dashboard</a>
           </li>
           <li class="nav-item">
-            <a href="counselor" class="nav-link"><i data-feather="box"></i> Counselor</a>
+            <a href="/backend/addurl" class="nav-link{{#if addurl}} active {{/if}}"><i data-feather="plus-circle"></i> Add a New Url</a>
+          </li>
+          <li class="nav-item">
+            <a href="/backend/editurl" class="nav-link{{#if editurl}} active {{/if}}"><i data-feather="edit"></i> Edit Existing Url</a>
+          </li>
+          <li class="nav-item">
+            <a href="/backend/allurls" class="nav-link{{#if allurls}} active {{/if}}"><i data-feather="list"></i> View All Urls</a>
+          </li>
+          <li class="nav-item">
+            <a href="/backend/counselor" class="nav-link{{#if counselor}} active {{/if}}"><i data-feather="user"></i> Counselor</a>
           </li>
         </ul>
       </div>
@@ -40,14 +49,14 @@
           <div class="dropdown dropdown-loggeduser">
             <a href="#" class="dropdown-link" data-toggle="dropdown">
               <div class="avatar avatar-sm">
-                <img src="assets/img/i80w1q0.png" class="rounded-circle" alt="">
+                <img src="/assets/img/i80w1q0.png" class="rounded-circle" alt="">
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-menu-header">
                 <div class="media align-items-center">
                   <div class="avatar">
-                    <img src="assets/img/i80w1q0.png" class="rounded-circle" alt="">
+                    <img src="/assets/img/i80w1q0.png" class="rounded-circle" alt="">
                   </div>
                   <div class="media-body mg-l-10">
                     <h6>Naman Aggarwal</h6>
@@ -63,7 +72,7 @@
       </div>
       <div class="content-header justify-content-between">
         <div>
-          <h4 class="content-title">Dashboard</h4>
+          <h4 class="content-title">{{content_title}}</h4>
         </div>
       </div>
       <div class="content-body">
@@ -73,10 +82,10 @@
         </div>
     </div>
     
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/feather-icons/feather.min.js"></script>
-    <script src="lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/cassie.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/feather-icons/feather.min.js"></script>
+    <script src="/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/cassie.js"></script>
     </body>
 
 

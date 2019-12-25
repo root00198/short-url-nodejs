@@ -7,6 +7,8 @@ const app = express();
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname,'public')));
 
 app.get("/", (req,res)=>{ 

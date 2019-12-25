@@ -1,0 +1,54 @@
+<div class="col-12">
+  <div class="card card-hover card-analytics-one">
+    <div class="card-body">
+      <form method="POST"> 
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="counselor">Counselor ID</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" required id="counselor" name="counselor" placeholder="JohnDoe">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="password">password</label>
+             <div class="input-group mg-b-10 col-sm-10">
+              <input type="password" class="form-control" required id="password" name="password" placeholder="password123">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-3 col-6 col-form-label" for="dashboard">Dashboard</label>
+          <div class="custom-control custom-switch col-sm-3 col-6 col-6 mg-t-8">
+            <input type="hidden" value="0" name="dashboard">
+            <input type="checkbox" checked class="custom-control-input" name="dashboard" id="dashboard" value="1">
+            <label class="custom-control-label"  for="dashboard">Active</label>
+          </div>
+          <label class="col-sm-3 col-6 col-form-label" for="addurl">Add Urls</label>
+          <div class="custom-control custom-switch col-sm-3 col-6 col-6 mg-t-8">
+            <input type="hidden" value="0" name="addurl">
+            <input type="checkbox" class="custom-control-input" name="addurl" id="addurl" value="1">
+            <label class="custom-control-label"  for="addurl">Active</label>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-3 col-6 col-form-label" for="editUrl">Edit Url</label>
+          <div class="custom-control custom-switch col-sm-3 col-6 col-6 mg-t-8">
+            <input type="hidden" value="0" name="editUrl">
+            <input type="checkbox" class="custom-control-input" name="editUrl" id="editUrl" value="1">
+            <label class="custom-control-label"  for="editUrl">Active</label>
+          </div>
+          <label class="col-sm-3 col-6 col-form-label" for="counselors">Manage Counselors</label>
+          <div class="custom-control custom-switch col-sm-3 col-6 col-6 mg-t-8">
+            <input type="hidden" value="0" name="counselors">
+            <input type="checkbox" class="custom-control-input" name="counselors" id="counselors" value="1">
+            <label class="custom-control-label"  for="counselors">Active</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <button type="submit" onclick="return validateData()" class="btn btn-primary mg-l-15">Submit</button>
+          <button type="reset" class="btn btn-secondary mg-l-15">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

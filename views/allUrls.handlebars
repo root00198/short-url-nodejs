@@ -1,0 +1,112 @@
+<script src="/lib/jquery/jquery.min.js"></script>
+<link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+<link href="/lib/select2/css/select2.min.css" rel="stylesheet">
+<link href="/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+<div class="col-12">
+  <div class="card card-hover card-analytics-one">
+    <div class="card-body">
+      <table id="list" classs="table table-striped">
+          <thead>
+            <tr>
+              <th class="wd-10p tx-center">ShortUrl</th>
+              <th class="wd-10p tx-center">LongUrl</th>
+              <th class="wd-10p tx-center">Counselor</th>
+              <th class="wd-10p tx-center">active</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each allUrls}}
+              <tr>
+                <td class="tx-center">{{this.shortUrl}}</td>
+                <td class="tx-center">{{this.longUrl}}</td>
+                <td class="tx-center">{{this.counselor}}</td>
+                <td class="tx-center">{{# if this.active}} Enabled {{else}} Disabled {{/if}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+<script src="/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+<script src="/lib/jquery-tabledit/jquery.tabledit.min.js"></script>
+<script src="/lib/select2/js/select2.full.min.js"></script>
+
+
+
+<script>
+  $(function () {
+        'use strict'
+        $('.select2').select2({
+            placeholder: 'Choose one',
+            searchInputPlaceholder: 'Search options'
+        });
+
+        $('#list').DataTable({
+        responsive: true,
+        "pageLength": 25,
+        language: {
+          searchPlaceholder: 'Search...',
+          sSearch: '',
+          lengthMenu: '_MENU_ items/page',
+        },
+        "fnDrawCallback": function( oSettings ) {
+          feather.replace();
+        }
+        });
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+    });
+
+$('#list').Tabledit({
+  columns: {
+    identifier: [0,"shortUrl"],
+    editable: [
+        [1, "longUrl"],
+        [3, "active", '{"1": "Enable", "0": "Disable"}']
+    ]
+  },
+  restoreButton: false,
+  buttons: {
+    edit: {
+        class: "btn btn-icon btn-outline-primary",
+        html: '<i data-feather="edit"></i>',
+        action: "edit"
+    },
+    delete: {
+        class: "btn btn-icon btn-outline-danger",
+        html: '<i data-feather="trash"></i>',
+        action: "delete"
+    },
+    save: {
+        class: 'btn btn-success',
+        html: 'Save'
+    },
+    confirm: {
+        class: 'btn btn-danger',
+        html: 'Confirm'
+    },
+  },
+  onSuccess: function(data, textStatus, jqXHR) {
+      alert("success");
+  },
+  onFail: function(jqXHR, textStatus, errorThrown) {
+      alert("failed");
+  },
+  onAlways: function() {
+      console.log('onAlways()');
+  },
+  onAjax: function(action, serialize) {
+      console.log('onAjax(action, serialize)');
+      console.log(action);
+      console.log(serialize);
+  }
+});
+</script>
+
