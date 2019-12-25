@@ -1,1 +1,83 @@
-{{{body}}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>Backend</title>
+    <link rel="stylesheet" href="assets/css/cassie.css">
+    <script src="lib/jquery/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div>
+          <a href="#" class="sidebar-logo"><span>Workshop</span></a>
+          <small class="sidebar-logo-headline">BACKEND</small>
+        </div>
+      </div>
+      <div id="dpSidebarBody" class="sidebar-body">
+        <ul class="nav nav-sidebar">
+          <li class="nav-label"><label class="content-label">Workshop Navigation</label></li>
+          <li class="nav-item">
+            <a href="dashboard" class="nav-link active"><i data-feather="box"></i> Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="counselor" class="nav-link"><i data-feather="box"></i> Counselor</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content content-page">
+      <div class="header">
+        <div class="header-left">
+          <a href="#" class="burger-menu"><i data-feather="menu"></i></a>
+        </div>
+
+        <div class="header-right">
+          <div class="dropdown dropdown-loggeduser">
+            <a href="#" class="dropdown-link" data-toggle="dropdown">
+              <div class="avatar avatar-sm">
+                <img src="assets/img/i80w1q0.png" class="rounded-circle" alt="">
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-menu-header">
+                <div class="media align-items-center">
+                  <div class="avatar">
+                    <img src="assets/img/i80w1q0.png" class="rounded-circle" alt="">
+                  </div>
+                  <div class="media-body mg-l-10">
+                    <h6>Naman Aggarwal</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="dropdown-menu-body">
+                <a href="login" class="dropdown-item"><i data-feather="log-out"></i> Sign Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-header justify-content-between">
+        <div>
+          <h4 class="content-title">Dashboard</h4>
+        </div>
+      </div>
+      <div class="content-body">
+          <div class="row row-sm">
+            {{{body}}}
+          </div>
+        </div>
+    </div>
+    
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/feather-icons/feather.min.js"></script>
+    <script src="lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/cassie.js"></script>
+    </body>
+
+
+    </html>
