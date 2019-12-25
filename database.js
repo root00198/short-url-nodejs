@@ -7,6 +7,15 @@ var connection = mysql.createConnection({
     database : "short-url"
 });
 
+function searchCounselor(counselorId, password, f){
+    var sql = `SELECT * from counselor where counselorId='${counselorId}' && password=md5('${password}')`;
+    connection.query(sql, (error, results, feilds)=>{
+        if(error)
+            throw error;
+        f(results);
+    });
+}
+
 function queryDatabase(shortUrl,f){
     var sql = "SELECT * from url where shortUrl='"+ shortUrl +"' && active=1 LIMIT 1";
     connection.query(sql,(error, results, feilds)=>{
@@ -120,7 +129,7 @@ function deleteShortUrl(shortUrl,f){
         f({});
     });
 }
-
+module.exports.searchCounselor = searchCounselor;
 module.exports.queryDatabase = queryDatabase;
 module.exports.incrementUrlNoOfClicks = incrementUrlNoOfClicks;
 module.exports.addNewShortUrl = addNewShortUrl;
@@ -130,4 +139,5 @@ module.exports.fetchAllShortUrl= fetchAllShortUrl;
 module.exports.fetchSingleShortUrl = fetchSingleShortUrl;
 module.exports.updateShortUrl = updateShortUrl;
 module.exports.deleteShortUrl = deleteShortUrl;
+
 

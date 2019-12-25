@@ -20,21 +20,31 @@
       <div id="dpSidebarBody" class="sidebar-body">
         <ul class="nav nav-sidebar">
           <li class="nav-label"><label class="content-label">Navigation</label></li>
+          {{#if dashboard_access}}
           <li class="nav-item">
             <a href="/backend/dashboard" class="nav-link{{#if dashboard}} active {{/if}}"><i data-feather="box"></i> Dashboard</a>
           </li>
+          {{/if}}
+          {{#if addUrl_access}}
           <li class="nav-item">
             <a href="/backend/addurl" class="nav-link{{#if addurl}} active {{/if}}"><i data-feather="plus-circle"></i> Add a New Url</a>
           </li>
+          {{/if}}
+          {{#if editUrl_access}}
           <li class="nav-item">
             <a href="/backend/editurl" class="nav-link{{#if editurl}} active {{/if}}"><i data-feather="edit"></i> Edit Existing Url</a>
           </li>
+          {{/if}}
+          {{#if allUrls_access}}
           <li class="nav-item">
             <a href="/backend/allurls" class="nav-link{{#if allurls}} active {{/if}}"><i data-feather="list"></i> View All Urls</a>
           </li>
+          {{/if}}
+          {{#if counselor_access}}
           <li class="nav-item">
             <a href="/backend/counselor" class="nav-link{{#if counselor}} active {{/if}}"><i data-feather="user"></i> Counselor</a>
           </li>
+          {{/if}}
         </ul>
       </div>
     </div>

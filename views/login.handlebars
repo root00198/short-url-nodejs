@@ -5,25 +5,25 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
     <title>Login</title>
-    <link href="lib/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/cassie.css">
+    <link href="/lib/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/cassie.css">
 
 </head>
 
 <body>
 
     <div class="signin-panel">
-        <svg-to-inline path="assets/svg/citywalk.svg" class-Name="svg-bg"></svg-to-inline>
+        <svg-to-inline path="/assets/svg/citywalk.svg" class-Name="svg-bg"></svg-to-inline>
 
         <div class="signin-sidebar">
             <div class="signin-sidebar-body">
                 <a class="sidebar-logo mg-b-40"><span>Workshops</span></a>
                 <h4 class="signin-title">Welcome back!</h4>
                 <h5 class="signin-subtitle">Please signin to continue.</h5>
-                <form method="POST" action="login.php">
+                <form method="POST" action="/backend/login">
                     <div class="signin-form">
                         <div class="form-group">
                             <label>Counselor Id</label>
@@ -44,10 +44,10 @@
         </div>
     </div>  
 
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/feather-icons/feather.min.js"></script>
-    <script src="lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/feather-icons/feather.min.js"></script>
+    <script src="/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script>
         $(function () {
@@ -62,7 +62,10 @@
 
         })
     </script>
-    <script src="assets/js/svg-inline.js"></script>
+    <script src="/assets/js/svg-inline.js"></script>
+    {{#if status}}
+    <script>alert('Something is not right. Please try again');</script>
+    {{/if}}
 </body>
 
 </html>
