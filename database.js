@@ -96,6 +96,31 @@ function fetchSingleShortUrl(shortUrl,f){
     });
 }
 
+
+function updateShortUrl(shortUrl, longUrl, active, f){
+    var sql = `UPDATE url SET longUrl='${longUrl}', active='${active}' where shortUrl='${shortUrl}'`;
+    connection.query(sql, (error, results, feilds)=>{
+        if(error)
+        {
+            f(error);
+            throw error;
+        }
+        f({});
+    });
+}
+
+function deleteShortUrl(shortUrl,f){
+    var sql = `DELETE from url where shortUrl='${shortUrl}'`;
+    connection.query(sql, (error, results, feilds)=>{
+        if(error)
+        {
+            f(error);
+            throw error;
+        }
+        f({});
+    });
+}
+
 module.exports.queryDatabase = queryDatabase;
 module.exports.incrementUrlNoOfClicks = incrementUrlNoOfClicks;
 module.exports.addNewShortUrl = addNewShortUrl;
@@ -103,4 +128,6 @@ module.exports.updateShortUrl = updateShortUrl;
 module.exports.fetchAllShortUrlNameAndCounselor = fetchAllShortUrlNameAndCounselor;
 module.exports.fetchAllShortUrl= fetchAllShortUrl;
 module.exports.fetchSingleShortUrl = fetchSingleShortUrl;
+module.exports.updateShortUrl = updateShortUrl;
+module.exports.deleteShortUrl = deleteShortUrl;
 

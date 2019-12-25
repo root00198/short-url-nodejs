@@ -99,6 +99,14 @@ router.get("/allurls", (req,res)=>{
         });
     });
 });
+
+router.post("/allurls",(req,res)=>{
+    if(req.body['action']==="edit")
+        database.updateShortUrl(req.body['shortUrl'], req.body['longUrl'], req.body['active'],(f)=>{res.send(f)});
+    else if(req.body['action']==="delete")
+        database.deleteShortUrl(req.body['shortUrl'],(f)=>{res.send(f)});
+});
+
 router.get("/counselor", (req,res)=>{
     res.render('counselor',{
         counselor : true,

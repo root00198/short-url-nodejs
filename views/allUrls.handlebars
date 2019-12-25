@@ -14,6 +14,7 @@
               <th class="wd-10p tx-center">ShortUrl</th>
               <th class="wd-10p tx-center">LongUrl</th>
               <th class="wd-10p tx-center">Counselor</th>
+              <th class="wd-10p tx-center">No Of Clicks</th>
               <th class="wd-10p tx-center">active</th>
             </tr>
           </thead>
@@ -23,6 +24,7 @@
                 <td class="tx-center">{{this.shortUrl}}</td>
                 <td class="tx-center">{{this.longUrl}}</td>
                 <td class="tx-center">{{this.counselor}}</td>
+                <td class="tx-center">{{this.noc}}</td>
                 <td class="tx-center">{{# if this.active}} Enabled {{else}} Disabled {{/if}}</td>
               </tr>
             {{/each}}
@@ -69,7 +71,7 @@ $('#list').Tabledit({
     identifier: [0,"shortUrl"],
     editable: [
         [1, "longUrl"],
-        [3, "active", '{"1": "Enable", "0": "Disable"}']
+        [4, "active", '{"1": "Enable", "0": "Disable"}']
     ]
   },
   restoreButton: false,
